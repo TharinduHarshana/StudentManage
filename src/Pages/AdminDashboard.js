@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Statistic, Button, Row, Col } from 'antd';
-import { TeamOutlined, PlusOutlined, UserAddOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { TeamOutlined, PlusOutlined, UserAddOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AdminDashBoard = () => {
     const [studentCount, setStudentCount] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getStudentCount();
@@ -18,6 +19,12 @@ const AdminDashBoard = () => {
         } catch (error) {
             console.error('Error getting student count:', error);
         }
+    };
+
+    const handleLogout = () => {
+        // Clear user session data if any, then redirect to home page
+        // For example: localStorage.removeItem('userToken');
+        navigate('/');
     };
 
     return (
@@ -54,6 +61,14 @@ const AdminDashBoard = () => {
                             Add New User
                         </Button>
                     </Link>
+                    <Button
+                        type="danger"
+                        icon={<LogoutOutlined />}
+                        style={{ marginLeft: '10px' }}
+                        onClick={handleLogout}
+                    >
+                        Logout
+                    </Button>
                 </div>
             </div>
         </div>
