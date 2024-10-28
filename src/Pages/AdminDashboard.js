@@ -22,13 +22,28 @@ const AdminDashBoard = () => {
     };
 
     const handleLogout = () => {
-        // Clear user session data if any, then redirect to home page
-        // For example: localStorage.removeItem('userToken');
         navigate('/');
     };
 
     return (
         <div className="container mt-5">
+            {/* Logout button positioned to top right */}
+            <Button
+                type="danger"
+                icon={<LogoutOutlined />}
+                style={{
+                    position: 'absolute',
+                    top: '20px',
+                    right: '20px',
+                    backgroundColor: '#ff4d4f',
+                    color: '#fff',
+                    borderColor: '#ff4d4f'
+                }}
+                onClick={handleLogout}
+            >
+                Logout
+            </Button>
+
             <div className="jumbotron">
                 <h1 className="display-4">Student Management System</h1>
                 <p className="lead">Welcome to the Student Management System</p>
@@ -61,14 +76,6 @@ const AdminDashBoard = () => {
                             Add New User
                         </Button>
                     </Link>
-                    <Button
-                        type="danger"
-                        icon={<LogoutOutlined />}
-                        style={{ marginLeft: '10px' }}
-                        onClick={handleLogout}
-                    >
-                        Logout
-                    </Button>
                 </div>
             </div>
         </div>
