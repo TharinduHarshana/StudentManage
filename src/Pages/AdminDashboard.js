@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Statistic, Button, Row, Col } from 'antd';
-import { TeamOutlined, PlusOutlined, UserAddOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { TeamOutlined, PlusOutlined, UserAddOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AdminDashBoard = () => {
     const [studentCount, setStudentCount] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getStudentCount();
@@ -20,8 +21,29 @@ const AdminDashBoard = () => {
         }
     };
 
+    const handleLogout = () => {
+        navigate('/');
+    };
+
     return (
         <div className="container mt-5">
+            {/* Logout button positioned to top right */}
+            <Button
+                type="danger"
+                icon={<LogoutOutlined />}
+                style={{
+                    position: 'absolute',
+                    top: '20px',
+                    right: '20px',
+                    backgroundColor: '#ff4d4f',
+                    color: '#fff',
+                    borderColor: '#ff4d4f'
+                }}
+                onClick={handleLogout}
+            >
+                Logout
+            </Button>
+
             <div className="jumbotron">
                 <h1 className="display-4">Student Management System</h1>
                 <p className="lead">Welcome to the Student Management System</p>
