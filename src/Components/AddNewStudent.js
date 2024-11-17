@@ -78,7 +78,7 @@ const AddStudent = () => {
             BDay: student.BDay.toISOString().split('T')[0]
         };
 
-        axios.post('http://localhost:8000/api/student/add', formattedStudent)
+        axios.post('https://st-mng-server-a.vercel.app/api/student/add', formattedStudent)
             .then(() => {
                 Swal.fire({
                     icon: 'success',
